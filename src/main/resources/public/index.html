@@ -7,12 +7,44 @@
 </head>
 <body>
 <div id="app" class="section is-size-2">
-    <p>{{ pokemonName }} wins</p>
-    <p>
-        <button v-on:click="battle()">Battle!</button>
+    <h1 class="title has-text-centered">Pokémon Battle</h1>
+    
+    <!-- Select Pokémon A -->
+    <div class="field">
+        <label class="label">Select Pokémon A</label>
+        <div class="control">
+            <input class="input" type="text" v-model="pokemonA" :disabled="isBattling" placeholder="Enter Pokémon name (e.g., Bulbasaur)" />
+        </div>
+    </div>
+    
+    <!-- Select Pokémon B -->
+    <div class="field">
+        <label class="label">Select Pokémon B</label>
+        <div class="control">
+            <input class="input" type="text" v-model="pokemonB" :disabled="isBattling" placeholder="Enter Pokémon name (e.g., Charmander)" />
+        </div>
+    </div>
+    
+    <!-- Battle Button or Play Again Button -->
+    <p class="control">
+        <button class="button is-primary" v-if="!isBattling" v-on:click="battle()">Battle!</button>
+        <button class="button is-primary" v-else v-on:click="reset()">Play Again!</button>
     </p>
+    
     <hr/>
-    <img class="sprite" v-bind:src="'https://img.pokemondb.net/sprites/home/normal/' + pokemonName.toLowerCase() + '.png'"/>
+    
+    <!-- Display Results -->
+    <div v-if="winner" class="battle-results">
+        <p class="has-text-weight-bold">{{ winner }} wins with {{ winnerHitPoints }} HP left!</p>
+        <div class="card" v-if="pokemonA">
+            <img class="sprite" v-bind:src="'https://img.pokemondb.net/sprites/home/normal/' + pokemonA.toLowerCase() + '.png'" />
+           
+        </div>
+        <div class="card" v-if="pokemonB">
+            <img class="sprite" v-bind:src="'https://img.pokemondb.net/sprites/home/normal/' + pokemonB.toLowerCase() + '.png'" />
+          
+        </div>
+    </div>
 </div>
 <script src="app.js"></script>
 </body>
