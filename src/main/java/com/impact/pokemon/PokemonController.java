@@ -46,6 +46,7 @@ public class PokemonController {
         Pokemon defender = attacker == firstPokemon ? secondPokemon : firstPokemon;
 
         // Random random = new Random();
+        
 
         while (firstPokemon.getHitPoints() > 0 && secondPokemon.getHitPoints() > 0) {
             double effectiveness = getEffectiveness(attacker.getType(), defender.getType());
