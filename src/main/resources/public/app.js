@@ -34,9 +34,7 @@ const app = Vue.createApp({
                 if (data.winner) {
                     this.winner = data.winner;
                     this.winnerHitPoints = data.hitPoints;
-                    // Assume hit points are also returned for each Pokémon
-                    this.pokemonAHitPoints = data.pokemonAHitPoints; // Update as needed in your backend
-                    this.pokemonBHitPoints = data.pokemonBHitPoints; // Update as needed in your backend
+                   
                 } else {
                     alert('Error: ' + data.error);
                 }
@@ -51,8 +49,7 @@ const app = Vue.createApp({
             this.pokemonB = '';
             this.winner = null;
             this.winnerHitPoints = null;
-            this.pokemonAHitPoints = null;
-            this.pokemonBHitPoints = null;
+           
             this.isBattling = false; // Re-enable inputs
         }
     }
